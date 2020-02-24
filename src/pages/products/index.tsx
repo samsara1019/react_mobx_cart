@@ -1,10 +1,10 @@
 
-import * as React from 'react';
-import { getProductItems } from "../../api/productApi"
-getProductItems()
+import React from 'react';
+import ProductListView from "../../components/productListView"
+
 const Products: React.FC = () => {
     return (
-        <div>Products Page</div>
+        <ProductListView />
     )
 }
 
