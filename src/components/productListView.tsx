@@ -1,21 +1,34 @@
 
 import React, { useState, useEffect } from 'react';
 import { ProductItem } from "../models"
-import { getProductItems, makeSortedProductItemsByScore, getProductTotalCount, DEFAULT_GET_COUNT } from "../api/productApi"
+import { getProductItems, makeSortedProductItemsByScore } from "../api/productApi"
 import Product from "./product"
+
+import {
+    useParams
+} from "react-router-dom";
+
 import "../css/components/productList.scss"
 
 
 const ProductListView = () => {
     const [ProductItems, setProductItems] = useState([] as ProductItem[])
 
+    let { page } = useParams();
+
     useEffect(() => {
         makeSortedProductItemsByScore()
-        setProductItems(getProductItems())
     }, [])
+
+    useEffect(() => {
+        let str = page as any as number;
+        setProductItems(getProductItems(str))
+    }, [page]);
+
 
     return (
         <div className="productListWrap">
+            page is : {page}
             {ProductItems.map((productItem) => (
                 <Product
                     key={productItem.id}

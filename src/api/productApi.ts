@@ -23,8 +23,18 @@ const 빈값대응 = (빈값있을지도: ProductItem[]) => {
     return 빈값있을지도
 }
 
-export const getProductItems = (existCount: number = 0) => {
-    return sortedProductItemsByScore.slice(existCount, DEFAULT_GET_COUNT)
+export const getProductItems = (existCount: number = 1) => {
+    let start = 0;
+    let end = 0;
+
+    if (existCount === 1) {
+        end = DEFAULT_GET_COUNT
+    } else {
+        start = (existCount - 1) * DEFAULT_GET_COUNT
+        end = start + DEFAULT_GET_COUNT
+    }
+
+    return sortedProductItemsByScore.slice(start, end)
 }
 
 export const getProductTotalCount = () => {

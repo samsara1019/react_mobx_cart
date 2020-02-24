@@ -8,7 +8,7 @@ const Root: React.FC = () => (
     <BrowserRouter>
         <Switch>
             <Route path="/" exact component={Products} />
-            <Route path="/products" component={Products} />
+            <Route path="/products/:page" component={Products} />
             <Route path="/cart" component={Cart} />
             <Redirect path="*" to="/" />
         </Switch>
