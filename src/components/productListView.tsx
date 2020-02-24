@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { ProductItem } from "../models"
-import { getProductItems, makeSortedProductItemsByScore } from "../api/productApi"
+import { getProductItems, makeSortedProductItemsByScore, getProductTotalCount, DEFAULT_GET_COUNT } from "../api/productApi"
 import Product from "./product"
-import productItems from '../data/productItems';
+import "../css/components/productList.scss"
 
 
 const ProductListView = () => {
@@ -13,7 +13,6 @@ const ProductListView = () => {
         makeSortedProductItemsByScore()
         setProductItems(getProductItems())
     }, [])
-
 
     return (
         <div className="productListWrap">

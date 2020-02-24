@@ -1,7 +1,7 @@
 import { ProductItem } from '../models';
 import ProductItems from "../data/productItems"
 
-const DEFAULT_GET_COUNT = 5;
+export const DEFAULT_GET_COUNT = 5;
 
 let sortedProductItemsByScore: ProductItem[] = []
 
@@ -25,4 +25,8 @@ const 빈값대응 = (빈값있을지도: ProductItem[]) => {
 
 export const getProductItems = (existCount: number = 0) => {
     return sortedProductItemsByScore.slice(existCount, DEFAULT_GET_COUNT)
+}
+
+export const getProductTotalCount = () => {
+    return sortedProductItemsByScore.length
 }

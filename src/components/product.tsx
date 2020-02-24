@@ -1,10 +1,15 @@
 
 import * as React from 'react';
 import { ProductItem } from "../models"
+import "../css/components/product.scss"
 
 const Products = (props: ProductItem) => {
     return (
-        <img src={props.coverImage} alt="" />
+        <div className="productWrap">
+            <img className="productCoverImage" src={props.coverImage} alt="" />
+            {props.title}
+            {props.price}
+        </div>
     )
 }
 
