@@ -34,6 +34,7 @@ const ProductListView: React.FC = ({ onPut, products }: any) => {
                     key={productItem.id}
                     ProductItem={productItem}
                     onPut={onPut}
+                    products={products}
                 />
             ))}
         </div>
