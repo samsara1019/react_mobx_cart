@@ -11,17 +11,16 @@ import {
 import "../css/components/productList.scss"
 
 
-const ProductListView = () => {
+const ProductListView: React.FC = () => {
     const [ProductItems, setProductItems] = useState([] as ProductItem[])
-
-    let { page } = useParams();
+    const { page } = useParams();
 
     useEffect(() => {
         makeSortedProductItemsByScore()
     }, [])
 
     useEffect(() => {
-        let str = page as any as number;
+        const str: number = Number(page || 1);
         setProductItems(getProductItems(str))
     }, [page]);
 

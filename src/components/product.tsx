@@ -3,12 +3,12 @@ import * as React from 'react';
 import { ProductItem } from "../models"
 import "../css/components/product.scss"
 
-const Products = (props: ProductItem) => {
+const Products: React.FC<ProductItem> = ({ coverImage, title, price }) => {
     return (
         <div className="productWrap">
-            <img className="productCoverImage" src={props.coverImage} alt="" />
-            {props.title}
-            {props.price}
+            <img className="productCoverImage" src={coverImage} alt="" />
+            {title}
+            {price}
         </div>
     )
 }
