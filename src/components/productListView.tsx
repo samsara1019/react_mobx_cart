@@ -12,7 +12,7 @@ import {
 import "../css/components/productList.scss"
 
 
-const ProductListView: React.FC = ({ onPut, products }: any) => {
+const ProductListView: React.FC<{ products: ProductItem[] }> = ({ onPut, products }: any, ) => {
     const [ProductItems, setProductItems] = useState([] as ProductItem[])
     const { page } = useParams();
 
@@ -46,6 +46,5 @@ const ProductListView: React.FC = ({ onPut, products }: any) => {
 }
 
 export default inject(({ cart }) => ({
-    products: cart.selectedProducts,
     onPut: cart.put,
 }))(observer(ProductListView));
