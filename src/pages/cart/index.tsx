@@ -1,19 +1,14 @@
 
 import * as React from 'react';
-import { ProductItem } from "../../models"
-import { inject, observer } from 'mobx-react';
+import CartGrid from "../../components/cartGrid"
 
-const Cart: React.FC = ({ products }: any) => {
+const Cart: React.FC = () => {
     return (
-        <div>Cart Page
-            products :
-            {products.map((product: ProductItem) =>
-            (<div key={product.id}>{product.title}</div>
-            ))}
+        <div>
+            Cart Page
+            <CartGrid />
         </div>
     )
 }
 
-export default inject(({ cart }) => ({
-    products: cart.selectedProducts,
-}))(observer(Cart));
+export default Cart;
