@@ -14,6 +14,7 @@ interface productProps {
 }
 
 const Products: React.FC<productProps> = ({ ProductItem, onPut, products }) => {
+    const MAX_CART_SIZE: number = 3;
     const CartIcon = () => {
         if (!products.find(p => p.id === ProductItem.id)) {
             return <AddShoppingCartIcon />;
@@ -23,6 +24,15 @@ const Products: React.FC<productProps> = ({ ProductItem, onPut, products }) => {
         }
     };
 
+    const checkCountBeforeOnPut = (ProductItem: ProductItem) => {
+        const exists = products.find(sProduct => sProduct.id === ProductItem.id);
+
+        if (!exists && products.length >= MAX_CART_SIZE) {
+            alert(`상품을 ${MAX_CART_SIZE}개 이상 담을 수 없습니다.`)
+            return;
+        }
+        onPut(ProductItem)
+    }
 
     return (
         <div className="productWrap">
@@ -39,7 +49,7 @@ const Products: React.FC<productProps> = ({ ProductItem, onPut, products }) => {
                     </div>
                 </div>
                 <IconButton color="primary" aria-label="add to shopping cart"
-                    className="cartButton" onClick={() => onPut(ProductItem)}>
+                    className="cartButton" onClick={() => checkCountBeforeOnPut(ProductItem)}>
                     <CartIcon />
                 </IconButton>
             </div>

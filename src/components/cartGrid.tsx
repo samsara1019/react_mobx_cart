@@ -19,35 +19,30 @@ const CartGrid: React.FC = ({ products, changeCount, changeCheckedAll, changeChe
 
         changeCount(productId, newCount)
     }
+
     const getTotalPrice = (price: number = 0, count: number = 0): string => {
         const total: number = price * count;
         return total.toLocaleString()
     }
+
     return (
         <div className="CartGridWrap">
-            <div>
+            <div className="header">
                 <Checkbox
                     color="primary"
                     onChange={(e) => changeCheckedAll(e.target.checked)}
                     inputProps={{ 'aria-label': 'secondary checkbox' }}
                 />
             </div>
-            <div>
-                강좌명
-            </div>
-            <div>
-                수량
-            </div>
-            <div>
-                단가
-            </div>
-            <div>
-                가격
-            </div>
+            <div className="header">강좌명</div>
+            <div className="header">단가</div>
+            <div className="header">수량</div>
+            <div className="header">가격</div>
+            <div className="header"><button>remove</button></div>
 
             {products.map((product: CartProductItem) =>
                 (
-                    <template className="content" key={product.id}>
+                    <div className="content" key={product.id}>
                         <div>
                             <Checkbox
                                 checked={product.ischecked}
@@ -57,6 +52,7 @@ const CartGrid: React.FC = ({ products, changeCount, changeCheckedAll, changeChe
                             />
                         </div>
                         <div>{product.title}</div>
+                        <div>{product.price.toLocaleString()}</div>
                         <div>
                             <TextField
                                 id={`numberField-${product.id}`}
@@ -68,9 +64,9 @@ const CartGrid: React.FC = ({ products, changeCount, changeCheckedAll, changeChe
                                 helperText={product.count < 1 ? "1개 이상 선택해주세요." : ''}
                             />
                         </div>
-                        <div>{product.price.toLocaleString()}</div>
                         <div>{getTotalPrice(product.price, product.count)}</div>
-                    </template>
+                        <div><button>remove</button></div>
+                    </div>
 
                 ))}
         </div>

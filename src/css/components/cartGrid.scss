@@ -1,15 +1,30 @@
 .CartGridWrap{
     display: grid;
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: auto 2fr auto 50px auto auto;
 
-    border-top: 1px solid #aaa;
-    border-left: 1px solid #aaa;
 
+    .header{
+        border-bottom: 1px solid #aaa;
+        font-weight: bold;
+
+        display: flex;
+        align-items: center;
+    }
     .content{
         display: contents;
-    }
-    div {
-        border-right: 1px solid #aaa;
         border-bottom: 1px solid #aaa;
+        div{
+            display: flex;
+            align-items: center;
+        }
+        &:last-child {
+            div{
+                border-bottom: 1px solid #aaa;
+            }
+        }
+    }
+
+    * {
+        padding: 3px;
     }
 }
