@@ -1,6 +1,7 @@
 import { observable, action, computed } from 'mobx';
 import { persist } from 'mobx-persist'
 import { ProductItem, CartProductItem, Coupon } from "../models"
+import { createTransformer } from "mobx-utils"
 export default class MarketStore {
     @persist('list') @observable selectedProducts = [] as CartProductItem[];
     @persist('object') @observable selectedCoupon = {} as Coupon;
@@ -88,6 +89,15 @@ export default class MarketStore {
             price1 -= this.selectedCoupon.discountAmount || 0
 
         return price1
+    }
+
+
+    @computed
+    get isInCart() {
+        return createTransformer(productId => {
+            const target = this.selectedProducts.find(sProduct => sProduct.id === productId)
+            return !!target;
+        })
     }
 
 }

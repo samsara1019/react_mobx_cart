@@ -7013,6 +7013,11 @@ mobx-react@^6.1.8:
   dependencies:
     mobx-react-lite "^1.4.2"
 
+mobx-utils@^5.5.4:
+  version "5.5.4"
+  resolved "https://registry.yarnpkg.com/mobx-utils/-/mobx-utils-5.5.4.tgz#59e3290935d46ac7cf3503f45c11a681112ca492"
+  integrity sha512-pWgcw8vpUB2tJHMwaZ/a6l7C6muAT8rLPDyrGSTDXu1c7AvCZUx+Tt8GjuYccY67aqz3IEe+Dn/NYF9hrVBwUw==
+
 mobx@^5.15.4:
   version "5.15.4"
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-5.15.4.tgz#9da1a84e97ba624622f4e55a0bf3300fb931c2ab"

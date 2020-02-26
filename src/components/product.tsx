@@ -13,17 +13,18 @@ interface productProps {
     ProductItem: ProductItem;
     onPut: any;
     products?: ProductItem[];
+    isInCart?: any
 }
 
-const Products: React.FC<productProps> = ({ ProductItem, onPut, products = [] }) => {
+const Products: React.FC<productProps> = ({ ProductItem, onPut, products = [], isInCart }) => {
     const MAX_CART_SIZE: number = 3;
 
     useEffect(() => {
         console.log('rendered')
-    }, [JSON.stringify(products)])
+    }, [isInCart(ProductItem.id)])
 
     const CartIcon = () => {
-        if (!products.find(p => p.id === ProductItem.id)) {
+        if (!isInCart(ProductItem.id)) {
             return <AddShoppingCartIcon />;
         } else {
             return <RemoveShoppingCartIcon />;
@@ -65,4 +66,5 @@ const Products: React.FC<productProps> = ({ ProductItem, onPut, products = [] })
 }
 export default inject(({ cart }) => ({
     products: cart.selectedProducts as ProductItem[],
+    isInCart: cart.isInCart
 }))(observer(Products));
