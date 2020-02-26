@@ -6,9 +6,11 @@ import { create } from 'mobx-persist'
 
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
+import Header from "../components/header"
 import Products from "../pages/products"
 import Cart from "../pages/cart"
 
+import "../css/index.scss"
 
 const hydrate = create({})
 const cart = new CartStore()
@@ -18,12 +20,15 @@ hydrate('cart', cart)
 const Root: React.FC = () => (
     <Provider cart={cart}>
         <BrowserRouter >
-            <Switch >
-                <Route path="/" exact component={Products} />
-                <Route path="/products/:page" component={Products} />
-                <Route path="/cart" component={Cart} />
-                <Redirect path="*" to="/" />
-            </Switch>
+            <div className="Wrap">
+                <Header />
+                <Switch>
+                    <Route path="/" exact component={Products} />
+                    <Route path="/products/:page" component={Products} />
+                    <Route path="/cart" component={Cart} />
+                    <Redirect path="*" to="/" />
+                </Switch>
+            </div>
         </BrowserRouter>
     </Provider>
 )
