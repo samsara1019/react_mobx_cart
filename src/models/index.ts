@@ -14,5 +14,6 @@ export interface CartProductItem extends ProductItem {
 export interface Coupon {
     type: string;
     title: string;
-    discountRate: number;
+    discountRate?: number;
+    discountAmount?: number;
 }
