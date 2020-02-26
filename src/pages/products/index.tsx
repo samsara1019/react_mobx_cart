@@ -1,24 +1,39 @@
 
 import React, { useState, useEffect } from 'react';
 import ProductListView from "../../components/productListView"
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { getProductTotalCount, DEFAULT_GET_COUNT } from "../../api/productApi"
 
+import Pagination from '@material-ui/lab/Pagination';
+import "../../css/pages/products.scss"
+
 const Products: React.FC = () => {
-    const [pageList, setPageList] = useState([] as number[])
+    let [pageCount, setPageCount] = useState(0 as number);
+    const history = useHistory();
+
     useEffect(() => {
         const totalCount: number = getProductTotalCount()
-        const pageCount: number = totalCount / DEFAULT_GET_COUNT
-        for (let i = 1; i < pageCount + 1; i++) {
-            setPageList(oldArray => [...oldArray, i]);
+        setPageCount(Math.ceil(totalCount / DEFAULT_GET_COUNT))
+
+        const unlisten = history.listen(() => {
+            window.scrollTo(0, 0);
+        });
+        return () => {
+            unlisten();
         }
     }, [])
+
+    const onPagePage = (e: React.ChangeEvent<HTMLInputElement>, number: number) => {
+        history.push(`/products/${number}`)
+    }
     return (
         <div>
-            {pageList.map((page) =>
-                <Link key={page} to={`/products/${page}`}>{page}</Link>
-            )}
             <ProductListView />
+            <div className="PaginationWrap">
+                <Pagination count={pageCount}
+                    color="primary"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>, number: number) => onPagePage(e, number)} />
+            </div>
         </div>
 
     )

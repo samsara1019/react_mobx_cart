@@ -25,10 +25,14 @@ const ProductListView: React.FC = ({ onPut, products }: any) => {
         setProductItems(getProductItems(str))
     }, [page]);
 
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [ProductItems]);
+
+
     return (
         <div className="productListWrap">
-            page is : {page}
-            products : {products.map((p: ProductItem) => (<div>{p.id}</div>))}
             {ProductItems.map((productItem) => (
                 <Product
                     key={productItem.id}
