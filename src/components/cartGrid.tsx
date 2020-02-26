@@ -7,8 +7,17 @@ import Checkbox from '@material-ui/core/Checkbox';
 import "../css/components/cartGrid.scss"
 
 const CartGrid: React.FC = ({ products, changeCount, changeCheckedAll, changeChecked }: any) => {
+
     const countChanged = (e: any, productId: string) => {
-        changeCount(productId, Number(e.target.value))
+        const input = document.getElementById(`numberField-${productId}`) as any;
+
+        const newCount = parseFloat(e.target.value);
+
+        if (!Number.isInteger(newCount) || newCount <= 0) {
+            if (input) input.value = 1
+        }
+
+        changeCount(productId, newCount)
     }
     const getTotalPrice = (price: number = 0, count: number = 0): string => {
         const total: number = price * count;
@@ -53,7 +62,7 @@ const CartGrid: React.FC = ({ products, changeCount, changeCheckedAll, changeChe
                                 id={`numberField-${product.id}`}
                                 type="number"
                                 defaultValue={product.count}
-                                onChange={(e) => countChanged(e, product.id)}
+                                onInput={(e) => countChanged(e, product.id)}
                                 inputProps={{ min: "1" }}
                                 error={product.count < 1}
                                 helperText={product.count < 1 ? "1개 이상 선택해주세요." : ''}

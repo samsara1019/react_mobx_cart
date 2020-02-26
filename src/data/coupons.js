@@ -11,4 +11,4 @@ const coupons = [
     }
 ];
 
-export default coupons
+export default coupons 
