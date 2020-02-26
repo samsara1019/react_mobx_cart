@@ -1,5 +1,5 @@
 
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { ProductItem } from "../models"
 import "../css/components/product.scss"
 
@@ -7,14 +7,21 @@ import IconButton from '@material-ui/core/IconButton';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
 
+import { inject, observer } from 'mobx-react';
+
 interface productProps {
     ProductItem: ProductItem;
     onPut: any;
-    products: ProductItem[];
+    products?: ProductItem[];
 }
 
-const Products: React.FC<productProps> = ({ ProductItem, onPut, products }) => {
+const Products: React.FC<productProps> = ({ ProductItem, onPut, products = [] }) => {
     const MAX_CART_SIZE: number = 3;
+
+    useEffect(() => {
+        console.log('rendered')
+    }, [JSON.stringify(products)])
+
     const CartIcon = () => {
         if (!products.find(p => p.id === ProductItem.id)) {
             return <AddShoppingCartIcon />;
@@ -56,5 +63,6 @@ const Products: React.FC<productProps> = ({ ProductItem, onPut, products }) => {
         </div>
     )
 }
-
-export default Products;
+export default inject(({ cart }) => ({
+    products: cart.selectedProducts as ProductItem[],
+}))(observer(Products));
