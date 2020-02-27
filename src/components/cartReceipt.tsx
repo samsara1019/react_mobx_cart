@@ -23,7 +23,7 @@ const CartReceipt: React.FC = ({ totalPrice, totalDiscountedPrice, selectedCoupo
                     상품 금액
                 </div>
                 <div className="ToRight">
-                    {totalPrice}
+                    {totalPrice.toLocaleString()}원
                 </div>
                 <div>
                     쿠폰
@@ -46,8 +46,8 @@ const CartReceipt: React.FC = ({ totalPrice, totalDiscountedPrice, selectedCoupo
                 최종 결제 금액
             </div>
 
-            <div className="ToRight">
-                {totalDiscountedPrice}
+            <div className="ToRight TotalDiscountedPrice">
+                {totalDiscountedPrice.toLocaleString().split(".")[0]}원
             </div>
             <Button
                 disabled={!products.length}

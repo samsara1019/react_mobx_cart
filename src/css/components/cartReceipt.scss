@@ -1,8 +1,4 @@
-.ToRight {
-    display: flex;
-    align-items: flex-end!important;
-    flex-direction: column;
-}
+
 .CartReceiptWrap{
     float: right;
 
@@ -32,6 +28,14 @@
         }
         .MuiButton-endIcon{
             margin-left: 0;
+        }
+    }
+    .ToRight {
+        display: flex;
+        align-items: flex-end!important;
+        flex-direction: column;
+        &.TotalDiscountedPrice{
+            font-weight:  bold;
         }
     }
 }
