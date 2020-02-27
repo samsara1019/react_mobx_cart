@@ -21,7 +21,9 @@ const CartItem: React.FC<CartItemProps> = ({ product, onTake, changeChecked, cha
         const newCount = parseFloat(e.target.value);
 
         if (!Number.isInteger(newCount) || newCount <= 0) {
-            if (input) input.value = 1
+            input.value = 1
+        } else if (newCount > 9999) {
+            input.value = 9999
         }
 
         changeCount(productId, newCount)
@@ -50,7 +52,7 @@ const CartItem: React.FC<CartItemProps> = ({ product, onTake, changeChecked, cha
                     type="number"
                     defaultValue={product.count}
                     onInput={(e) => countChanged(e, product.id)}
-                    inputProps={{ min: "1" }}
+                    inputProps={{ min: "1", max: "9999" }}
                     error={product.count < 1}
                     helperText={product.count < 1 ? "1개 이상 선택해주세요." : ''}
                 />
