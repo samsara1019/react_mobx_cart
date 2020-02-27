@@ -68,7 +68,7 @@ export default class MarketStore {
         if (Object.keys(this.selectedCoupon).length === 0) {
             return this.totalPrice
         }
-        let price1 = this.selectedProducts.reduce((previous, current) => {
+        let priceWithRateDiscount = this.selectedProducts.reduce((previous, current) => {
             if (current.ischecked) {
                 let price = current.price
                 if (this.selectedCoupon.type === 'rate') {
@@ -80,10 +80,10 @@ export default class MarketStore {
                 return previous
         }, 0)
 
-        if (this.selectedCoupon.type === 'amount')
-            price1 -= this.selectedCoupon.discountAmount || 0
+        if (this.selectedCoupon.type === 'amount' && priceWithRateDiscount)
+            priceWithRateDiscount -= this.selectedCoupon.discountAmount || 0
 
-        return price1
+        return priceWithRateDiscount
     }
 
 
