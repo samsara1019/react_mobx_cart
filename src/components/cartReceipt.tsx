@@ -9,12 +9,12 @@ import Select from '@material-ui/core/Select';
 
 import coupons from "../data/coupons"
 
-import "../css/components/cartTotal.scss"
+import "../css/components/cartReceipt.scss"
 
 
-const CartTotal: React.FC = ({ totalPrice, totalDiscountedPrice, selectedCoupon, selectCoupon }: any) => {
+const CartReceipt: React.FC = ({ totalPrice, totalDiscountedPrice, selectedCoupon, selectCoupon }: any) => {
     return (
-        <div className="CartTotalWrap">
+        <div className="CartReceiptWrap">
             <h1>결제정보</h1>
             <div className="content">
                 <div>
@@ -56,4 +56,4 @@ export default inject(({ cart }) => ({
     totalDiscountedPrice: cart.totalDiscountedPrice,
     selectedCoupon: cart.selectedCoupon,
     selectCoupon: cart.selectCoupon
-}))(observer(CartTotal));
+}))(observer(CartReceipt));

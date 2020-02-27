@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import CartGrid from "../../components/cartGrid"
-import CardTotal from "../../components/cartTotal"
+import CardTotal from "../../components/cartReceipt"
 
 
 const Cart: React.FC = () => {
