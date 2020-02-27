@@ -35,7 +35,7 @@ const Header: React.FC = ({ products }: any) => {
             <div className="MainButton">
                 <IconButton aria-label="cart" onClick={() => changePage('/')} >
                     메인
-                    <StyledBadge badgeContent={products.length} color="secondary">
+                    <StyledBadge color="secondary">
                         <StoreIcon />
                     </StyledBadge>
                 </IconButton>
