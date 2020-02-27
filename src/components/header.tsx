@@ -8,6 +8,7 @@ import { Theme, withStyles, createStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import StoreIcon from '@material-ui/icons/Store';
 
 import "../css/components/header.scss"
 
@@ -31,10 +32,17 @@ const Header: React.FC = ({ products }: any) => {
 
     return (
         <div className="headerWrap">
-            메인으로가즈아
+            <div className="MainButton">
+                <IconButton aria-label="cart" onClick={() => changePage('/')} >
+                    메인
+                    <StyledBadge badgeContent={products.length} color="secondary">
+                        <StoreIcon />
+                    </StyledBadge>
+                </IconButton>
+            </div>
             <div className="CartButton">
-                장바구니
                 <IconButton aria-label="cart" onClick={() => changePage('/cart')} >
+                    장바구니
                     <StyledBadge badgeContent={products.length} color="secondary">
                         <ShoppingCartIcon />
                     </StyledBadge>

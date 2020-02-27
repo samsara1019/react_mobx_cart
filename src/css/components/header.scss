@@ -2,8 +2,14 @@
     width: 100%;
     position: sticky;
     top: 0;
+    .MuiIconButton-root{
+        border-radius: 25%;
+    }
     .CartButton{
-        width: fit-content;
+        display: inline-block;
         float: right;
+    }
+    .MainButton{
+        display: inline-block;
     }
 }
