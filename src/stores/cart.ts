@@ -44,17 +44,12 @@ export default class MarketStore {
             productToChangeCount.count = newCount > 0 ? newCount : 1;
         }
     }
-
-    // calculateProductFianlPrice=(product: CartProductItem)=>{
-    //     const 
-    //     //퍼센트 쿠폰이 있다면 , 쿠폰 적용 상품이라면 다시 계산~
-    // }
-
     @action
-    selectCoupon = (newCoupone: string) => {
-        if (!newCoupone) this.selectedCoupon = {} as Coupon
+    selectCoupon = (context: any) => {
+        const dataModel = context.props['data-model']
+        if (!dataModel) this.selectedCoupon = {} as Coupon
         else {
-            this.selectedCoupon = Object.assign(JSON.parse(newCoupone));
+            this.selectedCoupon = Object.assign(dataModel);
         }
     }
 

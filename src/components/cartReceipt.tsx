@@ -29,13 +29,13 @@ const CartReceipt: React.FC = ({ totalPrice, totalDiscountedPrice, selectedCoupo
                     쿠폰
                 </div>
                 <FormControl className="ToRight">
-                    <Select value={selectedCoupon.title} onChange={(e) => selectCoupon(e.target.value)} displayEmpty>
+                    <Select value={selectedCoupon.title || ''} onChange={(e, context) => selectCoupon(context)} displayEmpty>
                         <MenuItem value="">
                             <em>쿠폰 적용 안함</em>
                         </MenuItem>
                         {
-                            coupons.map((coupon) =>
-                                (<MenuItem value={JSON.stringify(coupon)}>{coupon.title}</MenuItem>)
+                            coupons.map((coupon, index) =>
+                                (<MenuItem data-model={coupon} value={coupon.title} key={index}>{coupon.title}</MenuItem>)
                             )
                         }
                     </Select>
