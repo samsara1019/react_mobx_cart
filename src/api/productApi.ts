@@ -1,5 +1,6 @@
 import { ProductItem } from '../models';
 import ProductItems from "../data/productItems"
+import { v4 as uuidv4 } from 'uuid';
 
 export const DEFAULT_GET_COUNT: number = 5;
 
@@ -8,10 +9,9 @@ let sortedProductItemsByScore: ProductItem[] = []
 export const makeSortedProductItemsByScore = (): void => {
     sortedProductItemsByScore = sortProductItems();
     if (sortedProductItemsByScore.length)
-        sortedProductItemsByScore = 빈값대응(sortedProductItemsByScore);
+        sortedProductItemsByScore = fillEmptyElement(sortedProductItemsByScore);
     else
-
-        console.log(sortedProductItemsByScore)
+        console.error('no data!')
 }
 
 const sortProductItems = (): ProductItem[] => {
@@ -20,8 +20,15 @@ const sortProductItems = (): ProductItem[] => {
         .sort((a, b) => (a.score > b.score) ? -1 : ((b.score > a.score) ? 1 : 0));
 }
 
-const 빈값대응 = (빈값있을지도: ProductItem[]): ProductItem[] => {
-    return 빈값있을지도
+const fillEmptyElement = (sortedProductItemsByScore: ProductItem[]): ProductItem[] => {
+    sortedProductItemsByScore.forEach(product => {
+        if (!product.id) {
+            console.error('해당 product의 아이디값이 없습니다. => ', product)
+            console.error('임의의 ID를 생성합니다.')
+            product.id = uuidv4();
+        }
+    })
+    return sortedProductItemsByScore
 }
 
 export const getProductItems = (existCount: number = 1): ProductItem[] => {
