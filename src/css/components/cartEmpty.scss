@@ -6,9 +6,10 @@
 
     padding: 20px;
     .EmptyText{
-        display: inline;
+        display: inline-block;
         margin: 0 auto;
         color: midnightblue;
+        margin-bottom: 10px;
     }
     .MuiButton-contained{
         max-width: 200px;

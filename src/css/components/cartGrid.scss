@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: auto 2fr auto 65px auto auto;
 
-
+    margin-bottom: 25px;
     .header{
         border-bottom: 1px solid #aaa;
         font-weight: bold;
@@ -24,7 +24,7 @@
         }
     }
 
-    * {
-        padding: 3px;
+    div:not(.CartEmptyWrap) {
+        padding: 5px;
     }
 }
