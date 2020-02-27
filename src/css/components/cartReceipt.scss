@@ -24,4 +24,10 @@
         align-items: center;
         padding: 5px;
     }
+    .MuiButton-contained{
+        grid-column: 1/5;
+        &.cartEmpty{        
+            background-color: #bdbdbd;
+        }
+    }
 }

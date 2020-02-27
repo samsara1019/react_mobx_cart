@@ -6,13 +6,15 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Button from '@material-ui/core/Button';
+import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
 
 import coupons from "../data/coupons"
 
 import "../css/components/cartReceipt.scss"
 
 
-const CartReceipt: React.FC = ({ totalPrice, totalDiscountedPrice, selectedCoupon, selectCoupon }: any) => {
+const CartReceipt: React.FC = ({ totalPrice, totalDiscountedPrice, selectedCoupon, selectCoupon, products }: any) => {
     return (
         <div className="CartReceiptWrap">
             <h1>결제정보</h1>
@@ -47,6 +49,15 @@ const CartReceipt: React.FC = ({ totalPrice, totalDiscountedPrice, selectedCoupo
             <div className="ToRight">
                 {totalDiscountedPrice}
             </div>
+            <Button
+                disabled={!products.length}
+                variant="contained"
+                color="primary"
+                endIcon={<LocalFloristIcon />}
+                onClick={() => alert('준비중입니다!')}
+            >
+                클래스 수강하기
+            </Button>
         </div>
     )
 }
@@ -55,5 +66,6 @@ export default inject(({ cart }) => ({
     totalPrice: cart.totalPrice,
     totalDiscountedPrice: cart.totalDiscountedPrice,
     selectedCoupon: cart.selectedCoupon,
-    selectCoupon: cart.selectCoupon
+    selectCoupon: cart.selectCoupon,
+    products: cart.selectedProducts
 }))(observer(CartReceipt));

@@ -3,21 +3,12 @@ import { useHistory } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
 import StoreIcon from '@material-ui/icons/Store';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 import "../css/components/cartEmpty.scss"
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        button: {
-            margin: theme.spacing(1),
-        },
-    }),
-);
 
 const CartEmpty: React.FC = () => {
     const history = useHistory();
-    const classes = useStyles();
     const changePage = (path: string) => {
         history.push(path)
     }
@@ -27,8 +18,6 @@ const CartEmpty: React.FC = () => {
             <Button
                 onClick={() => changePage('/')}
                 variant="contained"
-                color="primary"
-                className={classes.button}
                 endIcon={<StoreIcon />}
             >
                 클래스 구경하러 가기
