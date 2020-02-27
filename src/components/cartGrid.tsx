@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import "../css/components/cartGrid.scss"
 
-const CartGrid: React.FC = ({ products, changeCount, changeCheckedAll, changeChecked }: any) => {
+const CartGrid: React.FC = ({ products, changeCount, changeCheckedAll, changeChecked, onTake }: any) => {
 
     const countChanged = (e: any, productId: string) => {
         const input = document.getElementById(`numberField-${productId}`) as any;
@@ -65,7 +65,7 @@ const CartGrid: React.FC = ({ products, changeCount, changeCheckedAll, changeChe
                             />
                         </div>
                         <div>{getTotalPrice(product.price, product.count)}</div>
-                        <div><button>remove</button></div>
+                        <div><button onClick={() => onTake(product)}>remove</button></div>
                     </div>
 
                 ))}
@@ -77,5 +77,6 @@ export default inject(({ cart }) => ({
     products: cart.selectedProducts,
     changeCount: cart.changeCount,
     changeCheckedAll: cart.changeCheckedAll,
-    changeChecked: cart.changeChecked
+    changeChecked: cart.changeChecked,
+    onTake: cart.take,
 }))(observer(CartGrid));
