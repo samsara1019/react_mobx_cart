@@ -1,0 +1,17 @@
+.CartEmptyWrap{
+    grid-column: 1/7;
+
+    display: flex;
+    flex-direction: column; 
+
+    padding: 20px;
+    .EmptyText{
+        display: inline;
+        margin: 0 auto;
+        color: midnightblue;
+    }
+    .MuiButton-contained{
+        max-width: 200px;
+        margin: 0 auto;
+    }
+}
