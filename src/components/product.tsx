@@ -6,6 +6,7 @@ import "../css/components/product.scss"
 import IconButton from '@material-ui/core/IconButton';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
+import Grow from '@material-ui/core/Grow';
 
 import { inject, observer } from 'mobx-react';
 
@@ -43,25 +44,30 @@ const Products: React.FC<productProps> = ({ ProductItem, onPut, products = [], i
     }
 
     return (
-        <div className="productWrap">
-            <div className="productTop"
-                style={{ backgroundImage: `url(${ProductItem.coverImage})` }}>
-            </div>
-            <div className="productBottom">
-                <div className="title">
-                    {ProductItem.title}
-                </div>
-                <div className="price">
-                    <div>
-                        {ProductItem.price.toLocaleString()}원
+        <Grow in={true}>
+            <div className="productWrap">
+                <div className="productTop">
+                    <div className="productImage"
+                        style={{ backgroundImage: `url(${ProductItem.coverImage})` }}>
                     </div>
                 </div>
-                <IconButton color="primary" aria-label="add to shopping cart"
-                    className="cartButton" onClick={() => checkCountBeforeOnPut(ProductItem)}>
-                    <CartIcon />
-                </IconButton>
+                <div className="productBottom">
+                    <div className="title">
+                        {ProductItem.title}
+                    </div>
+                    <div className="price">
+                        <div>
+                            {ProductItem.price.toLocaleString()}원
+                    </div>
+                    </div>
+                    <IconButton color="primary" aria-label="add to shopping cart"
+                        className="cartButton" onClick={() => checkCountBeforeOnPut(ProductItem)}>
+                        <CartIcon />
+                    </IconButton>
+                </div>
             </div>
-        </div>
+        </Grow>
+
     )
 }
 export default inject(({ cart }) => ({

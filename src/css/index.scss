@@ -1,4 +1,23 @@
+
+
+$Phone: "Only screen and (max-width : 768px) ";
+$desktop: "screen and (min-width : 769px)";
+$body_max_size: 680px;
+$body_min_size: 480px;
+
+
 .Wrap{
     display: flex;
     flex-direction: column;
+}
+
+.BodyWrap {
+    width: $body_max_size;
+    margin: 0 auto;
+    @media screen and (max-width: $body_max_size) {
+      width: 100%;
+    }
+    @media screen and (max-width: $body_min_size) {
+      width: $body_min_size;
+    }
 }

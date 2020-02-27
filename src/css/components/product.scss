@@ -9,15 +9,34 @@
     width: 100%;
     margin: 20px 50px;
     box-sizing: border-box;
+    border-radius: 30px;
 
     display: grid;
     grid-template-rows: minmax(300px, auto) 1fr;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+      
+    &:hover {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+
     .productTop{
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
 
-        background-size: 100% 100%;
-      
+        overflow: hidden;
+        .productImage{
+            width: 100%;
+            height: 100%;
+            background-size: 100% 100%;
+            
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+            
     }
     .productBottom{
         border-bottom-left-radius: 30px;

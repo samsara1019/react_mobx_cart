@@ -38,7 +38,7 @@ const CartGrid: React.FC = ({ products, changeCount, changeCheckedAll, changeChe
             <div className="header">단가</div>
             <div className="header">수량</div>
             <div className="header">가격</div>
-            <div className="header"><button>remove</button></div>
+            <div className="header">삭제</div>
 
             {products.map((product: CartProductItem) =>
                 (

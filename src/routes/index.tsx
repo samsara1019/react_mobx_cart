@@ -22,12 +22,14 @@ const Root: React.FC = () => (
         <BrowserRouter >
             <div className="Wrap">
                 <Header />
-                <Switch>
-                    <Route path="/" exact component={Products} />
-                    <Route path="/products/:page" component={Products} />
-                    <Route path="/cart" component={Cart} />
-                    <Redirect path="*" to="/" />
-                </Switch>
+                <div className="BodyWrap">
+                    <Switch>
+                        <Route path="/" exact component={Products} />
+                        <Route path="/products/:page" component={Products} />
+                        <Route path="/cart" component={Cart} />
+                        <Redirect path="*" to="/" />
+                    </Switch>
+                </div>
             </div>
         </BrowserRouter>
     </Provider>
