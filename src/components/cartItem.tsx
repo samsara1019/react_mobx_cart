@@ -5,7 +5,8 @@ import { inject, observer } from 'mobx-react';
 
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
-
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 interface CartItemProps {
     product: CartProductItem;
@@ -55,7 +56,11 @@ const CartItem: React.FC<CartItemProps> = ({ product, onTake, changeChecked, cha
                 />
             </div>
             <div>{getTotalPrice(product.price, product.count)}</div>
-            <div><button onClick={() => onTake(product)}>remove</button></div>
+            <div>
+                <IconButton aria-label="delete" size="small" onClick={() => onTake(product)}>
+                    <DeleteIcon fontSize="inherit" />
+                </IconButton>
+            </div>
         </div>
     )
 }
