@@ -1,7 +1,7 @@
 
 import React, { useEffect } from 'react';
 
-import { ProductItem } from "../models"
+import { ProductItem, ToastObject } from "../models"
 import "../css/components/product.scss"
 
 import IconButton from '@material-ui/core/IconButton';
@@ -13,13 +13,13 @@ import { inject, observer } from 'mobx-react';
 
 interface productProps {
     ProductItem: ProductItem;
-    onPut: any;
+    onPut: (product: ProductItem) => void;
     products?: ProductItem[];
-    isInCart?: any;
-    changeToastObject?: any;
+    isInCart?: (productId: string) => boolean;
+    changeToastObject?: (newToastObject: ToastObject) => void;
 }
 
-const Products: React.FC<productProps> = ({ ProductItem, onPut, products = [], isInCart, changeToastObject }) => {
+const Products: React.FC<productProps> = ({ ProductItem, onPut = (() => { }), products = [], isInCart = (() => { }), changeToastObject = (() => { }) }) => {
     const MAX_CART_SIZE: number = 3;
     useEffect(() => {
         console.log('rendered')

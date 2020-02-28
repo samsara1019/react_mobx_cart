@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { ProductItem } from "../models"
 
 import { inject, observer } from 'mobx-react';
 
@@ -11,8 +12,10 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import StoreIcon from '@material-ui/icons/Store';
 
 import "../css/components/header.scss"
-
-const Header: React.FC = ({ products }: any) => {
+interface ProductsProp {
+    products?: ProductItem[]
+}
+const Header: React.FC<ProductsProp> = ({ products = [] }) => {
     const history = useHistory();
 
     const changePage = (path: string) => {

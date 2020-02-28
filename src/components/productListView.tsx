@@ -11,8 +11,11 @@ import {
 
 import "../css/components/productList.scss"
 
-
-const ProductListView: React.FC<{ products: ProductItem[] }> = ({ onPut, products }: any, ) => {
+interface ProductListViewProps {
+    products: ProductItem[];
+    onPut?: (product: ProductItem) => void
+}
+const ProductListView: React.FC<ProductListViewProps> = ({ onPut = (() => { }), products }) => {
     const [ProductItems, setProductItems] = useState([] as ProductItem[])
     const { page } = useParams();
 

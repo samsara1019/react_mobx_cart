@@ -7,7 +7,7 @@ export default class MarketStore {
     @persist('object') @observable selectedCoupon = {} as Coupon;
 
     @action
-    put = (product: ProductItem) => {
+    put = (product: ProductItem): void => {
         const exists = this.selectedProducts.find(sProduct => sProduct.id === product.id);
         if (!exists) {
             this.selectedProducts.push({ ...product, count: 1, ischecked: true });
@@ -17,27 +17,27 @@ export default class MarketStore {
     };
 
     @action
-    take = (product: ProductItem) => {
+    take = (product: ProductItem): void => {
         const productIndexToTake: number = this.selectedProducts.findIndex(sProduct => sProduct.id === product.id)
         this.selectedProducts.splice(productIndexToTake, 1);
     };
 
     @action
-    changeCheckedAll = (newCheckValue: boolean) => {
+    changeCheckedAll = (newCheckValue: boolean): void => {
         this.selectedProducts.forEach(product => {
             product.ischecked = newCheckValue
         });
     }
 
     @action
-    changeChecked = (productId: string) => {
+    changeChecked = (productId: string): void => {
         const productToChangeChecked = this.selectedProducts.find(sProduct => sProduct.id === productId);
         if (productToChangeChecked)
             productToChangeChecked.ischecked = !productToChangeChecked.ischecked;
     }
 
     @action
-    changeCount = (productId: string, newCount: number) => {
+    changeCount = (productId: string, newCount: number): void => {
         const productToChangeCount = this.selectedProducts.find(sProduct => sProduct.id === productId);
 
         if (productToChangeCount) {
@@ -45,7 +45,7 @@ export default class MarketStore {
         }
     }
     @action
-    selectCoupon = (context: any) => {
+    selectCoupon = (context: any): void => {
         const dataModel = context.props['data-model']
         if (!dataModel) this.selectedCoupon = {} as Coupon
         else {
@@ -54,7 +54,7 @@ export default class MarketStore {
     }
 
     @computed
-    get totalPrice() {
+    get totalPrice(): number {
         return this.selectedProducts.reduce((previous, current) => {
             if (current.ischecked)
                 return previous + current.price * current.count;
@@ -64,7 +64,7 @@ export default class MarketStore {
     }
 
     @computed
-    get totalDiscountedPrice() {
+    get totalDiscountedPrice(): number {
         if (Object.keys(this.selectedCoupon).length === 0) {
             return this.totalPrice
         }
@@ -89,7 +89,7 @@ export default class MarketStore {
 
     @computed
     get isInCart() {
-        return createTransformer(productId => {
+        return createTransformer((productId: string): boolean => {
             const target = this.selectedProducts.find(sProduct => sProduct.id === productId)
             return !!target;
         })

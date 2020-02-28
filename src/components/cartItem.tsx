@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CartProductItem } from "../models"
+import { CartProductItem, ProductItem } from "../models"
 
 import { inject, observer } from 'mobx-react';
 
@@ -10,11 +10,11 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 interface CartItemProps {
     product: CartProductItem;
-    onTake?: any;
-    changeChecked?: any;
-    changeCount?: any;
+    onTake?: (product: ProductItem) => void;
+    changeChecked?: (productId: string) => void;
+    changeCount?: (productId: string, newCount: number) => void;
 }
-const CartItem: React.FC<CartItemProps> = ({ product, onTake, changeChecked, changeCount }) => {
+const CartItem: React.FC<CartItemProps> = ({ product, onTake = (() => { }), changeChecked = (() => { }), changeCount = (() => { }) }) => {
     const countChanged = (e: any, productId: string) => {
         const input = document.getElementById(`numberField-${productId}`) as any;
 

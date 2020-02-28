@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import ProductListView from "../../components/productListView"
+import { ProductItem } from "../../models"
 
 import { useHistory } from 'react-router-dom';
 import { getProductTotalCount, DEFAULT_GET_COUNT } from "../../api/productApi"
@@ -13,7 +14,10 @@ import "../../css/pages/products.scss"
 
 import { inject, observer } from 'mobx-react';
 
-const Products: React.FC = ({ products }: any) => {
+interface ProductsProp {
+    products: ProductItem[]
+}
+const Products: React.FC<ProductsProp> = ({ products }) => {
     let [pageCount, setPageCount] = useState(0 as number);
     const history = useHistory();
 

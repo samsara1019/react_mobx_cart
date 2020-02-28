@@ -4,8 +4,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import { Slide } from 'react-toastify';
 import { ToastObject } from "../models"
 
-
-const Toast: React.FC = ({ toastObject }: any) => {
+interface ToastProps {
+    toastObject?: ToastObject
+}
+const Toast: React.FC<ToastProps> = ({ toastObject = {} as ToastObject }) => {
     useEffect(() => {
         showToast(toastObject)
     }, [toastObject]);

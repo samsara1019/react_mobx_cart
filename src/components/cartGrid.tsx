@@ -8,7 +8,11 @@ import { inject, observer } from 'mobx-react';
 import "../css/components/cartGrid.scss"
 import Checkbox from '@material-ui/core/Checkbox';
 
-const CartGrid: React.FC = ({ products, changeCheckedAll }: any) => {
+interface CartGridProps {
+    products?: CartProductItem[];
+    changeCheckedAll?: (newCheckValue: boolean) => void
+}
+const CartGrid: React.FC<CartGridProps> = ({ products = [], changeCheckedAll = (() => { }) }) => {
 
     return (
         <div className="CartGridWrap">
