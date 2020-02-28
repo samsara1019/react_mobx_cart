@@ -15,15 +15,17 @@ interface CartItemProps {
     changeCount?: (productId: string, newCount: number) => void;
 }
 const CartItem: React.FC<CartItemProps> = ({ product, onTake = (() => { }), changeChecked = (() => { }), changeCount = (() => { }) }) => {
+    const MIN_CART_COUNT = 1;
+    const MAX_CART_COUNT = 9999;
+
     const countChanged = (e: any, productId: string) => {
         const input = document.getElementById(`numberField-${productId}`) as any;
-
         const newCount = parseFloat(e.target.value);
 
         if (!Number.isInteger(newCount) || newCount <= 0) {
-            input.value = 1
-        } else if (newCount > 9999) {
-            input.value = 9999
+            input.value = MIN_CART_COUNT
+        } else if (newCount > MAX_CART_COUNT) {
+            input.value = MAX_CART_COUNT
         }
 
         changeCount(productId, newCount)
@@ -52,7 +54,7 @@ const CartItem: React.FC<CartItemProps> = ({ product, onTake = (() => { }), chan
                     type="number"
                     defaultValue={product.count}
                     onInput={(e) => countChanged(e, product.id)}
-                    inputProps={{ min: "1", max: "9999" }}
+                    inputProps={{ min: MIN_CART_COUNT, max: MAX_CART_COUNT }}
                     error={product.count < 1}
                     helperText={product.count < 1 ? "1개 이상 선택해주세요." : ''}
                 />
