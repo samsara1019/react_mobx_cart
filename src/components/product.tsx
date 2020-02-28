@@ -21,18 +21,18 @@ interface productProps {
 
 const Products: React.FC<productProps> = ({ ProductItem, onPut = (() => { }), products = [], isInCart = (() => { }), changeToastObject = (() => { }) }) => {
     const MAX_CART_SIZE: number = 3;
-    useEffect(() => {
-        console.log('rendered')
-    }, [isInCart(ProductItem.id)])
 
-    const CartIcon = () => {
-        if (!isInCart(ProductItem.id)) {
-            return <AddShoppingCartIcon />;
-        } else {
-            return <RemoveShoppingCartIcon />;
+    // useEffect(() => {
 
-        }
-    };
+    // }, [isInCart(ProductItem.id)])
+
+    // let CartIcon = () => {
+    //     if (!isInCart(ProductItem.id)) {
+    //         return <AddShoppingCartIcon />;
+    //     } else {
+    //         return <RemoveShoppingCartIcon />;
+    //     }
+    // };
 
     const checkCountBeforeOnPut = (ProductItem: ProductItem) => {
         const exists = products.find(sProduct => sProduct.id === ProductItem.id);
@@ -65,7 +65,12 @@ const Products: React.FC<productProps> = ({ ProductItem, onPut = (() => { }), pr
                     </div>
                     <IconButton color="primary" aria-label="add to shopping cart"
                         className="cartButton" onClick={() => checkCountBeforeOnPut(ProductItem)}>
-                        <CartIcon />
+                        {
+                            !isInCart(ProductItem.id)
+                                ? <AddShoppingCartIcon />
+                                : <RemoveShoppingCartIcon />
+                        }
+                        {/* <CartIcon /> */}
                     </IconButton>
                 </div>
             </div>
