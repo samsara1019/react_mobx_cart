@@ -17,3 +17,7 @@ export interface Coupon {
     discountRate?: number;
     discountAmount?: number;
 }
+export interface ToastObject {
+    toastText: string;
+    toastType: "info" | "success" | "warning" | "error" | "default" | undefined;
+}

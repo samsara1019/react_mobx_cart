@@ -1,26 +1,34 @@
 import * as React from 'react';
 
 import { Provider } from 'mobx-react';
-import CartStore from "../stores/cart"
-import { create } from 'mobx-persist'
+import CartStore from "../stores/cart";
+import ToastStore from "../stores/toast";
+import { create } from 'mobx-persist';
 
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
+import Toast from "../components/toast"
 import Header from "../components/header"
 import Products from "../pages/products"
 import Cart from "../pages/cart"
 
 import "../css/index.scss"
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
+
 const hydrate = create({})
-const cart = new CartStore()
-hydrate('cart', cart)
-    .then(() => console.log('appState hydrated'))
+const cartStore = new CartStore()
+const toastStore = new ToastStore()
+hydrate('cart', cartStore)
 
 const Root: React.FC = () => (
-    <Provider cart={cart}>
+    <Provider cart={cartStore} toast={toastStore}>
         <BrowserRouter >
             <div className="Wrap">
+                <Toast />
                 <Header />
                 <div className="BodyWrap">
                     <Switch>
@@ -35,4 +43,4 @@ const Root: React.FC = () => (
     </Provider>
 )
 
-export default Root;
+export default Root

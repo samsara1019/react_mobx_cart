@@ -14,7 +14,7 @@ import coupons from "../data/coupons"
 import "../css/components/cartReceipt.scss"
 
 
-const CartReceipt: React.FC = ({ totalPrice, totalDiscountedPrice, selectedCoupon, selectCoupon, products }: any) => {
+const CartReceipt: React.FC = ({ totalPrice, totalDiscountedPrice, selectedCoupon, selectCoupon, products, changeToastObject }: any) => {
     return (
         <div className="CartReceiptWrap">
             <h1>결제정보</h1>
@@ -54,7 +54,7 @@ const CartReceipt: React.FC = ({ totalPrice, totalDiscountedPrice, selectedCoupo
                 variant="contained"
                 color="primary"
                 endIcon={<LocalFloristIcon />}
-                onClick={() => alert('준비중입니다!')}
+                onClick={() => changeToastObject({ toastText: `😎 준비중입니다!`, toastType: 'info' })}
             >
                 클래스 수강하기
             </Button>
@@ -62,10 +62,11 @@ const CartReceipt: React.FC = ({ totalPrice, totalDiscountedPrice, selectedCoupo
     )
 }
 
-export default inject(({ cart }) => ({
+export default inject(({ cart, toast }) => ({
     totalPrice: cart.totalPrice,
     totalDiscountedPrice: cart.totalDiscountedPrice,
     selectedCoupon: cart.selectedCoupon,
     selectCoupon: cart.selectCoupon,
-    products: cart.selectedProducts
+    products: cart.selectedProducts,
+    changeToastObject: toast.changeToastObject
 }))(observer(CartReceipt));

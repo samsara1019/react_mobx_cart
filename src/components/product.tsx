@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+
 import { ProductItem } from "../models"
 import "../css/components/product.scss"
 
@@ -14,12 +15,12 @@ interface productProps {
     ProductItem: ProductItem;
     onPut: any;
     products?: ProductItem[];
-    isInCart?: any
+    isInCart?: any;
+    changeToastObject?: any;
 }
 
-const Products: React.FC<productProps> = ({ ProductItem, onPut, products = [], isInCart }) => {
+const Products: React.FC<productProps> = ({ ProductItem, onPut, products = [], isInCart, changeToastObject }) => {
     const MAX_CART_SIZE: number = 3;
-
     useEffect(() => {
         console.log('rendered')
     }, [isInCart(ProductItem.id)])
@@ -37,7 +38,9 @@ const Products: React.FC<productProps> = ({ ProductItem, onPut, products = [], i
         const exists = products.find(sProduct => sProduct.id === ProductItem.id);
 
         if (!exists && products.length >= MAX_CART_SIZE) {
-            alert(`상품을 ${MAX_CART_SIZE}개 이상 담을 수 없습니다.`)
+            changeToastObject(
+                { toastText: `😢 ${MAX_CART_SIZE}개 이상은 넣을 수 없어요.`, toastType: 'warning' }
+            );
             return;
         }
         onPut(ProductItem)
@@ -70,7 +73,8 @@ const Products: React.FC<productProps> = ({ ProductItem, onPut, products = [], i
 
     )
 }
-export default inject(({ cart }) => ({
+export default inject(({ cart, toast }) => ({
     products: cart.selectedProducts as ProductItem[],
-    isInCart: cart.isInCart
+    isInCart: cart.isInCart,
+    changeToastObject: toast.changeToastObject
 }))(observer(Products));
