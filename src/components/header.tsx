@@ -18,10 +18,6 @@ interface ProductsProp {
 const Header: React.FC<ProductsProp> = ({ products = [] }) => {
     const history = useHistory();
 
-    const changePage = (path: string) => {
-        history.push(path)
-    }
-
     const StyledBadge = withStyles((theme: Theme) =>
         createStyles({
             badge: {
@@ -36,7 +32,7 @@ const Header: React.FC<ProductsProp> = ({ products = [] }) => {
     return (
         <div className="headerWrap">
             <div className="mainButton">
-                <IconButton aria-label="cart" onClick={() => changePage('/')} >
+                <IconButton aria-label="cart" onClick={() => history.push('/')} >
                     메인
                     <StyledBadge color="secondary">
                         <StoreIcon />
@@ -44,7 +40,7 @@ const Header: React.FC<ProductsProp> = ({ products = [] }) => {
                 </IconButton>
             </div>
             <div className="cartButton">
-                <IconButton aria-label="cart" onClick={() => changePage('/cart')} >
+                <IconButton aria-label="cart" onClick={() => history.push('/cart')} >
                     장바구니
                     <StyledBadge badgeContent={products.length} color="secondary">
                         <ShoppingCartIcon />

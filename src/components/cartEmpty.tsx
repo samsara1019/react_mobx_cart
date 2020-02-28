@@ -9,14 +9,12 @@ import "../css/components/cartEmpty.scss"
 
 const CartEmpty: React.FC = () => {
     const history = useHistory();
-    const changePage = (path: string) => {
-        history.push(path)
-    }
+
     return (
         <div className="cartEmptyWrap">
             <span className="emptyText">아직 장바구니에 담은 클래스가 없습니다.</span>
             <Button
-                onClick={() => changePage('/')}
+                onClick={() => history.push('/')}
                 variant="contained"
                 endIcon={<StoreIcon />}
             >
