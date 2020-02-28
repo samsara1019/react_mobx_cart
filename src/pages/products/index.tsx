@@ -18,7 +18,7 @@ interface ProductsProp {
     products: ProductItem[]
 }
 const Products: React.FC<ProductsProp> = ({ products }) => {
-    let [pageCount, setPageCount] = useState(0 as number);
+    let [pageCount, setPageCount] = useState(0);
     const history = useHistory();
 
     useEffect(() => {
