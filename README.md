@@ -10,11 +10,15 @@
 - `typescript`
 
 ## 실행방법
+`npm run start` 커맨드로 결과물을 확인하시기 전에 `npm install`을 통해 node_module 설치를 부탁드립니다. 
+
 ```bash
+npm install
 npm run start
 ```
 혹은
 ```bash
+yarn
 yarn start
 ```
 커맨드를 입력하시면 [localhost:3001](http://localhost:3001/) 에서 확인하실 수 있습니다.
