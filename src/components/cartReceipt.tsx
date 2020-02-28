@@ -31,19 +31,19 @@ const CartReceipt: React.FC<CartReceiptProps>
         changeToastObject = (() => { })
     }) => {
         return (
-            <div className="CartReceiptWrap">
+            <div className="cartReceiptWrap">
                 <h1>결제정보</h1>
                 <div className="content">
                     <div>
                         상품 금액
-                </div>
-                    <div className="ToRight">
+                    </div>
+                    <div className="toRight">
                         {totalPrice.toLocaleString()}원
-                </div>
-                    <div>
+                    </div>
+                    <div className="verticalCenter">
                         쿠폰
-                </div>
-                    <FormControl className="ToRight">
+                    </div>
+                    <FormControl className="toRight">
                         <Select value={selectedCoupon.title || ''} onChange={(e, context) => selectCoupon(context)} displayEmpty>
                             <MenuItem value="">
                                 <em>쿠폰 적용 안함</em>
@@ -59,11 +59,11 @@ const CartReceipt: React.FC<CartReceiptProps>
                 </div>
                 <div>
                     최종 결제 금액
-            </div>
+                </div>
 
-                <div className="ToRight TotalDiscountedPrice">
+                <div className="toRight totalDiscountedPrice">
                     {totalDiscountedPrice.toLocaleString().split(".")[0]}원
-            </div>
+                </div>
                 <Button
                     disabled={!products.length}
                     variant="contained"
@@ -72,7 +72,7 @@ const CartReceipt: React.FC<CartReceiptProps>
                     onClick={() => changeToastObject({ toastText: `😎 준비중입니다!`, toastType: 'info' })}
                 >
                     클래스 수강하기
-            </Button>
+                </Button>
             </div>
         )
     }

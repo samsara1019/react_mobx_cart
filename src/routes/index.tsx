@@ -27,10 +27,10 @@ hydrate('cart', cartStore)
 const Root: React.FC = () => (
     <Provider cart={cartStore} toast={toastStore}>
         <BrowserRouter >
-            <div className="Wrap">
+            <div className="wrap">
                 <Toast />
                 <Header />
-                <div className="BodyWrap">
+                <div className="bodyWrap">
                     <Switch>
                         <Route path="/" exact component={Products} />
                         <Route path="/products/:page" component={Products} />

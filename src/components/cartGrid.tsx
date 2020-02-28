@@ -15,7 +15,7 @@ interface CartGridProps {
 const CartGrid: React.FC<CartGridProps> = ({ products = [], changeCheckedAll = (() => { }) }) => {
 
     return (
-        <div className="CartGridWrap">
+        <div className="cartGridWrap">
             <div className="header">
                 <Checkbox
                     color="primary"

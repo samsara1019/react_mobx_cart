@@ -1,11 +1,11 @@
-.CartEmptyWrap{
+.cartEmptyWrap{
     grid-column: 1/7;
 
     display: flex;
     flex-direction: column; 
 
     padding: 20px;
-    .EmptyText{
+    .emptyText{
         display: inline-block;
         margin: 0 auto;
         color: midnightblue;

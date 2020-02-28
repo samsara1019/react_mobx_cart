@@ -35,7 +35,7 @@ const Header: React.FC<ProductsProp> = ({ products = [] }) => {
 
     return (
         <div className="headerWrap">
-            <div className="MainButton">
+            <div className="mainButton">
                 <IconButton aria-label="cart" onClick={() => changePage('/')} >
                     메인
                     <StyledBadge color="secondary">
@@ -43,7 +43,7 @@ const Header: React.FC<ProductsProp> = ({ products = [] }) => {
                     </StyledBadge>
                 </IconButton>
             </div>
-            <div className="CartButton">
+            <div className="cartButton">
                 <IconButton aria-label="cart" onClick={() => changePage('/cart')} >
                     장바구니
                     <StyledBadge badgeContent={products.length} color="secondary">

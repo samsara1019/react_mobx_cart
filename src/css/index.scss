@@ -6,12 +6,12 @@ $body_max_size: 680px;
 $body_min_size: 480px;
 
 
-.Wrap{
+.wrap{
     display: flex;
     flex-direction: column;
 }
 
-.BodyWrap {
+.bodyWrap {
     width: $body_max_size;
     margin: 0 auto;
     @media screen and (max-width: $body_max_size) {

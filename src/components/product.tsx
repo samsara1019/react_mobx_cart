@@ -22,18 +22,6 @@ interface productProps {
 const Products: React.FC<productProps> = ({ ProductItem, onPut = (() => { }), products = [], isInCart = (() => { }), changeToastObject = (() => { }) }) => {
     const MAX_CART_SIZE: number = 3;
 
-    // useEffect(() => {
-
-    // }, [isInCart(ProductItem.id)])
-
-    // let CartIcon = () => {
-    //     if (!isInCart(ProductItem.id)) {
-    //         return <AddShoppingCartIcon />;
-    //     } else {
-    //         return <RemoveShoppingCartIcon />;
-    //     }
-    // };
-
     const checkCountBeforeOnPut = (ProductItem: ProductItem) => {
         const exists = products.find(sProduct => sProduct.id === ProductItem.id);
 
@@ -70,7 +58,6 @@ const Products: React.FC<productProps> = ({ ProductItem, onPut = (() => { }), pr
                                 ? <AddShoppingCartIcon />
                                 : <RemoveShoppingCartIcon />
                         }
-                        {/* <CartIcon /> */}
                     </IconButton>
                 </div>
             </div>

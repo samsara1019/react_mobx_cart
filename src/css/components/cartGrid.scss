@@ -1,4 +1,4 @@
-.CartGridWrap{
+.cartGridWrap{
     display: grid;
     grid-template-columns: auto 2fr auto 100px auto auto;
 
@@ -13,7 +13,7 @@
     .content{
         display: contents;
         border-bottom: 1px solid #aaa;
-        div{
+        .verticalCenter{
             display: flex;
             align-items: center;
         }
@@ -24,7 +24,7 @@
         }
     }
 
-    div:not(.CartEmptyWrap) {
+    div:not(.cartEmptyWrap) {
         padding: 5px;
     }
 }

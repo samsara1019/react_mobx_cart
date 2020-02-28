@@ -1,5 +1,5 @@
 
-.CartReceiptWrap{
+.cartReceiptWrap{
     float: right;
 
     display: grid;
@@ -16,10 +16,9 @@
     .content{
         display: contents;        
     }
-    * {       
+    .verticalCenter {       
         display: flex;
         align-items: center;
-        padding: 5px;
     }
     .MuiButton-contained{
         grid-column: 1/3;
@@ -30,11 +29,11 @@
             margin-left: 0;
         }
     }
-    .ToRight {
+    .toRight {
         display: flex;
         align-items: flex-end!important;
         flex-direction: column;
-        &.TotalDiscountedPrice{
+        &.totalDiscountedPrice{
             font-weight:  bold;
         }
     }

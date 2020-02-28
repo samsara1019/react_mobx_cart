@@ -13,8 +13,8 @@ const CartEmpty: React.FC = () => {
         history.push(path)
     }
     return (
-        <div className="CartEmptyWrap">
-            <span className="EmptyText">아직 장바구니에 담은 클래스가 없습니다.</span>
+        <div className="cartEmptyWrap">
+            <span className="emptyText">아직 장바구니에 담은 클래스가 없습니다.</span>
             <Button
                 onClick={() => changePage('/')}
                 variant="contained"

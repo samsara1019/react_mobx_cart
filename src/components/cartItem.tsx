@@ -37,8 +37,8 @@ const CartItem: React.FC<CartItemProps> = ({ product, onTake = (() => { }), chan
     }
 
     return (
-        <div className="content" >
-            <div>
+        <div className="content">
+            <div className="verticalCenter padding5">
                 <Checkbox
                     checked={product.ischecked}
                     color="primary"
@@ -46,9 +46,9 @@ const CartItem: React.FC<CartItemProps> = ({ product, onTake = (() => { }), chan
                     inputProps={{ 'aria-label': 'secondary checkbox' }}
                 />
             </div>
-            <div>{product.title}</div>
-            <div>{product.price.toLocaleString()}</div>
-            <div>
+            <div className="verticalCenter">{product.title}</div>
+            <div className="verticalCenter">{product.price.toLocaleString()}</div>
+            <div className="verticalCenter">
                 <TextField
                     id={`numberField-${product.id}`}
                     type="number"
@@ -59,8 +59,8 @@ const CartItem: React.FC<CartItemProps> = ({ product, onTake = (() => { }), chan
                     helperText={product.count < 1 ? "1개 이상 선택해주세요." : ''}
                 />
             </div>
-            <div>{getTotalPrice(product.price, product.count)}</div>
-            <div>
+            <div className="verticalCenter">{getTotalPrice(product.price, product.count)}</div>
+            <div className="verticalCenter">
                 <IconButton aria-label="delete" size="small" onClick={() => onTake(product)}>
                     <DeleteIcon fontSize="inherit" />
                 </IconButton>
