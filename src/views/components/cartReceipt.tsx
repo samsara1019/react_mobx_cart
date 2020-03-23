@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { Coupon, CartProductItem, ToastObject } from "../models"
+
+import { Coupon, CartProductItem, ToastObject } from '../../models';
+import coupons from '../../data/coupons';
+
 import { inject, observer } from 'mobx-react';
 
 import MenuItem from '@material-ui/core/MenuItem';
@@ -9,16 +12,15 @@ import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
 
-import coupons from "../data/coupons"
 
-import "../css/components/cartReceipt.scss"
+import '../../css/components/cartReceipt.scss';
 
 interface CartReceiptProps {
     totalPrice?: number;
     totalDiscountedPrice?: number;
     selectedCoupon?: Coupon;
     selectCoupon?: (context: any) => void;
-    products?: CartProductItem[];
+    productList?: CartProductItem[];
     changeToastObject?: (newToastObject: ToastObject) => void;
 }
 
@@ -27,25 +29,25 @@ const CartReceipt: React.FC<CartReceiptProps>
         totalDiscountedPrice = 0,
         selectedCoupon = {},
         selectCoupon = (() => { }),
-        products = [],
+        productList = [],
         changeToastObject = (() => { })
     }) => {
         return (
-            <div className="cartReceiptWrap">
+            <div className='cartReceiptWrap'>
                 <h1>결제정보</h1>
-                <div className="content">
+                <div className='content'>
                     <div>
                         상품 금액
                     </div>
-                    <div className="toRight">
+                    <div className='toRight'>
                         {totalPrice.toLocaleString()}원
                     </div>
-                    <div className="verticalCenter">
+                    <div className='verticalCenter'>
                         쿠폰
                     </div>
-                    <FormControl className="toRight">
+                    <FormControl className='toRight'>
                         <Select value={selectedCoupon.title || ''} onChange={(e, context) => selectCoupon(context)} displayEmpty>
-                            <MenuItem value="">
+                            <MenuItem value=''>
                                 <em>쿠폰 적용 안함</em>
                             </MenuItem>
                             {
@@ -61,17 +63,17 @@ const CartReceipt: React.FC<CartReceiptProps>
                     최종 결제 금액
                 </div>
 
-                <div className="toRight totalDiscountedPrice">
-                    {totalDiscountedPrice.toLocaleString().split(".")[0]}원
+                <div className='toRight totalDiscountedPrice'>
+                    {totalDiscountedPrice.toLocaleString().split('.')[0]}원
                 </div>
                 <Button
-                    disabled={!products.length}
-                    variant="contained"
-                    color="primary"
+                    disabled={!productList.length}
+                    variant='contained'
+                    color='primary'
                     endIcon={<LocalFloristIcon />}
                     onClick={() => changeToastObject({ toastText: `😎 준비중입니다!`, toastType: 'info' })}
                 >
-                    클래스 수강하기
+                    구매하기
                 </Button>
             </div>
         )
@@ -82,6 +84,6 @@ export default inject(({ cart, toast }) => ({
     totalDiscountedPrice: cart.totalDiscountedPrice,
     selectedCoupon: cart.selectedCoupon,
     selectCoupon: cart.selectCoupon,
-    products: cart.selectedProducts,
+    productList: cart.cartList,
     changeToastObject: toast.changeToastObject
 }))(observer(CartReceipt));

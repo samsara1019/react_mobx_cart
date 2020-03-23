@@ -1,10 +1,9 @@
+$size_max: 1024px;
+$size_middle: 768px;
 
-
-$Phone: "Only screen and (max-width : 768px) ";
-$desktop: "screen and (min-width : 769px)";
-$body_max_size: 680px;
-$body_min_size: 480px;
-
+body {
+  margin: 0;
+}
 
 .wrap{
     display: flex;
@@ -12,12 +11,13 @@ $body_min_size: 480px;
 }
 
 .bodyWrap {
-    width: $body_max_size;
+    width: $size_middle;
     margin: 0 auto;
-    @media screen and (max-width: $body_max_size) {
-      width: 100%;
+    
+    @media screen and (min-width: $size_max) {
+      width: $size_max;
     }
-    @media screen and (max-width: $body_min_size) {
-      width: $body_min_size;
+    @media screen and (max-width: $size_middle) {
+      width: 100%;
     }
 }

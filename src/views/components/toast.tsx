@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
+
+import { ToastObject } from '../../models'
+
 import { inject, observer } from 'mobx-react';
+
 import { ToastContainer, toast } from 'react-toastify';
 import { Slide } from 'react-toastify';
-import { ToastObject } from "../models"
 
 interface ToastProps {
     toastObject?: ToastObject
 }
+
 const Toast: React.FC<ToastProps> = ({ toastObject = {} as ToastObject }) => {
     useEffect(() => {
         showToast(toastObject)
@@ -17,7 +21,7 @@ const Toast: React.FC<ToastProps> = ({ toastObject = {} as ToastObject }) => {
 
         toast(toastObject.toastText, {
             type: toastObject.toastType,
-            position: "top-center",
+            position: 'top-center',
             autoClose: 1000,
             hideProgressBar: true,
             closeOnClick: true,
@@ -29,7 +33,7 @@ const Toast: React.FC<ToastProps> = ({ toastObject = {} as ToastObject }) => {
     return (
         <ToastContainer
             transition={Slide}
-            position="top-center"
+            position='top-center'
             hideProgressBar
             closeOnClick
             rtl={false}

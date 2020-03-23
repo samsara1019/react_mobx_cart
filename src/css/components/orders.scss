@@ -1,0 +1,27 @@
+.orderWrap{
+    position: sticky;
+    top: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    height: 30px;
+    background: white;
+    border: 1px solid black;
+    z-index: 1;
+
+    .orderButton {
+        color: black;
+        background: white;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 0 5px;
+        &.select {
+            color: white;
+            background: green;
+            border: 1px solid green;
+            font-weight: bold;
+        }
+    }
+}

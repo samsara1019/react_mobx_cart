@@ -1,8 +1,7 @@
 
 import * as React from 'react';
-import CartGrid from "../../components/cartGrid"
-import CardTotal from "../../components/cartReceipt"
-
+import CartGrid from '../components/cartGrid';
+import CardTotal from '../components/cartReceipt';
 
 const Cart: React.FC = () => {
     return (
@@ -13,4 +12,4 @@ const Cart: React.FC = () => {
     )
 }
 
-export default Cart
+export default Cart;

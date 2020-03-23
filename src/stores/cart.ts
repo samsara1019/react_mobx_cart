@@ -1,16 +1,16 @@
 import { observable, action, computed } from 'mobx';
 import { persist } from 'mobx-persist'
-import { ProductItem, CartProductItem, Coupon } from "../models"
-import { createTransformer } from "mobx-utils"
+import { ProductItem, CartProductItem, Coupon } from '../models'
+import { createTransformer } from 'mobx-utils'
 export default class MarketStore {
-    @persist('list') @observable selectedProducts = [] as CartProductItem[];
+    @persist('list') @observable cartList = [] as CartProductItem[];
     @persist('object') @observable selectedCoupon = {} as Coupon;
 
     @action
     put = (product: ProductItem): void => {
-        const exists = this.selectedProducts.find(sProduct => sProduct.id === product.id);
+        const exists = this.cartList.find(cart => cart.id === product.id);
         if (!exists) {
-            this.selectedProducts.push({ ...product, count: 1, ischecked: true });
+            this.cartList.push({ ...product, count: 1, ischecked: true });
         } else {
             this.take(product)
         }
@@ -18,35 +18,35 @@ export default class MarketStore {
 
     @action
     take = (product: ProductItem): void => {
-        const productIndexToTake: number = this.selectedProducts.findIndex(sProduct => sProduct.id === product.id)
-        this.selectedProducts.splice(productIndexToTake, 1);
+        const cartIndexToTake: number = this.cartList.findIndex(cart => cart.id === product.id)
+        this.cartList.splice(cartIndexToTake, 1);
     };
 
     @action
     changeCheckedAll = (newCheckValue: boolean): void => {
-        this.selectedProducts.forEach(product => {
-            product.ischecked = newCheckValue
+        this.cartList.forEach(cart => {
+            cart.ischecked = newCheckValue
         });
     }
 
     @action
     changeChecked = (productId: string): void => {
-        const productToChangeChecked = this.selectedProducts.find(sProduct => sProduct.id === productId);
-        if (productToChangeChecked)
-            productToChangeChecked.ischecked = !productToChangeChecked.ischecked;
+        const cartToChangeChecked = this.cartList.find(cart => cart.id === productId);
+        if (cartToChangeChecked)
+            cartToChangeChecked.ischecked = !cartToChangeChecked.ischecked;
     }
 
     @action
     changeCount = (productId: string, newCount: number): void => {
-        const productToChangeCount = this.selectedProducts.find(sProduct => sProduct.id === productId);
+        const cartToChangeCount = this.cartList.find(cart => cart.id === productId);
 
-        if (productToChangeCount) {
-            productToChangeCount.count = newCount > 0 ? newCount : 1;
+        if (cartToChangeCount) {
+            cartToChangeCount.count = newCount > 0 ? newCount : 1;
         }
     }
     @action
     selectCoupon = (context: any): void => {
-        const dataModel = context.props['data-model']
+        const dataModel = context.props['data-model'];
         if (!dataModel) this.selectedCoupon = {} as Coupon
         else {
             this.selectedCoupon = Object.assign(dataModel);
@@ -55,7 +55,7 @@ export default class MarketStore {
 
     @computed
     get totalPrice(): number {
-        return this.selectedProducts.reduce((previous, current) => {
+        return this.cartList.reduce((previous, current) => {
             if (current.ischecked)
                 return previous + current.price * current.count;
             else
@@ -68,7 +68,7 @@ export default class MarketStore {
         if (Object.keys(this.selectedCoupon).length === 0) {
             return this.totalPrice
         }
-        let priceWithRateDiscount = this.selectedProducts.reduce((previous, current) => {
+        let priceWithRateDiscount = this.cartList.reduce((previous, current) => {
             if (current.ischecked) {
                 let price = current.price
                 if (this.selectedCoupon.type === 'rate') {
@@ -90,7 +90,7 @@ export default class MarketStore {
     @computed
     get isInCart() {
         return createTransformer((productId: string): boolean => {
-            const target = this.selectedProducts.find(sProduct => sProduct.id === productId)
+            const target = this.cartList.find(cart => cart.id === productId)
             return !!target;
         })
     }

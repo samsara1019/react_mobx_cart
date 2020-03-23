@@ -1,16 +1,17 @@
-# 클래스101 프론트앤드 개발자 과제
+# 프로젝트 소개
 
-안녕하세요. 클래스101 프론트앤드 직군에 지원한 **이윤혜** 입니다.    
-해당 과제는 `React`로 개발하였습니다.
+`React`와 `mobx`로 구현한 장바구니 시스템 입니다.
 
-## 사용 라이브러리
+## 무엇을 사용했나요
 
-- 상태관리 : `mobx`
-- UI : `material-ui`, `react-toastify`
-- `typescript`
+- 라이브러리 : `React`
+- 언어 : `typescript`
+- 상태관리 라이브러리 : `mobx`
+- UI 라이브러리 : `material-ui`, `react-toastify`
+- http 요청 : `axios`
 
 ## 실행방법
-`npm run start` 커맨드로 결과물을 확인하시기 전에 `npm install`을 통해 node_module 설치를 부탁드립니다. 
+`npm run start` 커맨드로 결과물을 확인하시기 전에 `npm install`을 통해 node_module 설치하세요. 
 
 ```bash
 npm install

@@ -1,5 +1,25 @@
+$size_max: 1024px;
+$size_middle: 768px;
 .productListWrap {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    
+    column-gap: 20px;
+    row-gap: 20px;
+    @media screen and (min-width: $size_max) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    @media screen and (min-width: $size_middle) and (max-width: $size_max - 1) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (max-width: $size_middle) {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    .skeleton{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

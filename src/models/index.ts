@@ -1,7 +1,7 @@
 export interface ProductItem {
     id: string;
     title: string;
-    coverImage?: string;
+    coverImage: string;
     price: number;
     score: number;
 }
@@ -19,5 +19,5 @@ export interface Coupon {
 }
 export interface ToastObject {
     toastText: string;
-    toastType: "info" | "success" | "warning" | "error" | "default" | undefined;
+    toastType: 'info' | 'success' | 'warning' | 'error' | 'default' | undefined;
 }

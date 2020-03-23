@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { CartProductItem, ProductItem } from "../models"
+
+import { CartProductItem, ProductItem } from '../../models';
 
 import { inject, observer } from 'mobx-react';
 
@@ -14,6 +15,7 @@ interface CartItemProps {
     changeChecked?: (productId: string) => void;
     changeCount?: (productId: string, newCount: number) => void;
 }
+
 const CartItem: React.FC<CartItemProps> = ({ product, onTake = (() => { }), changeChecked = (() => { }), changeCount = (() => { }) }) => {
     const MIN_CART_COUNT = 1;
     const MAX_CART_COUNT = 9999;
@@ -37,32 +39,32 @@ const CartItem: React.FC<CartItemProps> = ({ product, onTake = (() => { }), chan
     }
 
     return (
-        <div className="content">
-            <div className="verticalCenter padding5">
+        <div className='content'>
+            <div className='verticalCenter padding5'>
                 <Checkbox
                     checked={product.ischecked}
-                    color="primary"
+                    color='primary'
                     onChange={() => changeChecked(product.id)}
                     inputProps={{ 'aria-label': 'secondary checkbox' }}
                 />
             </div>
-            <div className="verticalCenter">{product.title}</div>
-            <div className="verticalCenter">{product.price.toLocaleString()}</div>
-            <div className="verticalCenter">
+            <div className='verticalCenter'>{product.title}</div>
+            <div className='verticalCenter'>{product.price.toLocaleString()}</div>
+            <div className='verticalCenter'>
                 <TextField
                     id={`numberField-${product.id}`}
-                    type="number"
+                    type='number'
                     defaultValue={product.count}
                     onInput={(e) => countChanged(e, product.id)}
                     inputProps={{ min: MIN_CART_COUNT, max: MAX_CART_COUNT }}
                     error={product.count < 1}
-                    helperText={product.count < 1 ? "1개 이상 선택해주세요." : ''}
+                    helperText={product.count < 1 ? '1개 이상 선택해주세요.' : ''}
                 />
             </div>
-            <div className="verticalCenter">{getTotalPrice(product.price, product.count)}</div>
-            <div className="verticalCenter">
-                <IconButton aria-label="delete" size="small" onClick={() => onTake(product)}>
-                    <DeleteIcon fontSize="inherit" />
+            <div className='verticalCenter'>{getTotalPrice(product.price, product.count)}</div>
+            <div className='verticalCenter'>
+                <IconButton aria-label='delete' size='small' onClick={() => onTake(product)}>
+                    <DeleteIcon fontSize='inherit' />
                 </IconButton>
             </div>
         </div>
