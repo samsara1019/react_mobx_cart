@@ -1,14 +1,16 @@
 # 프로젝트 소개
-
 `React`와 `mobx`로 구현한 장바구니 시스템 입니다.
 
 ## 무엇을 사용했나요
-
 - 라이브러리 : `React`
 - 언어 : `typescript`
 - 상태관리 라이브러리 : `mobx`
 - UI 라이브러리 : `material-ui`, `react-toastify`
 - http 요청 : `axios`
+
+# Demo
+[Demo](https://samsara1019.github.io/react_mobx_cart)
+
 
 # 실행방법
 `npm run start` 커맨드로 결과물을 확인하시기 전에 `npm install`을 통해 node_module 설치하세요. 
