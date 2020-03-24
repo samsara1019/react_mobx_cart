@@ -22,4 +22,4 @@ npm run start
 yarn
 yarn start
 ```
-커맨드를 입력하시면 [localhost:3001](http://localhost:3001/) 에서 확인하실 수 있습니다.
+커맨드를 입력하시면 [localhost:3000](http://localhost:3000/) 에서 확인하실 수 있습니다.
