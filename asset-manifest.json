@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/react_mobx_cart/static/css/main.15016d75.chunk.css",
+    "main.js": "/react_mobx_cart/static/js/main.89ab011b.chunk.js",
+    "main.js.map": "/react_mobx_cart/static/js/main.89ab011b.chunk.js.map",
+    "runtime-main.js": "/react_mobx_cart/static/js/runtime-main.509cd697.js",
+    "runtime-main.js.map": "/react_mobx_cart/static/js/runtime-main.509cd697.js.map",
+    "static/css/2.5dbdccff.chunk.css": "/react_mobx_cart/static/css/2.5dbdccff.chunk.css",
+    "static/js/2.a44c730e.chunk.js": "/react_mobx_cart/static/js/2.a44c730e.chunk.js",
+    "static/js/2.a44c730e.chunk.js.map": "/react_mobx_cart/static/js/2.a44c730e.chunk.js.map",
+    "index.html": "/react_mobx_cart/index.html",
+    "precache-manifest.1eac7c7a8e0ccb5b21daa13422e9ab0d.js": "/react_mobx_cart/precache-manifest.1eac7c7a8e0ccb5b21daa13422e9ab0d.js",
+    "service-worker.js": "/react_mobx_cart/service-worker.js",
+    "static/css/2.5dbdccff.chunk.css.map": "/react_mobx_cart/static/css/2.5dbdccff.chunk.css.map",
+    "static/css/main.15016d75.chunk.css.map": "/react_mobx_cart/static/css/main.15016d75.chunk.css.map",
+    "static/js/2.a44c730e.chunk.js.LICENSE.txt": "/react_mobx_cart/static/js/2.a44c730e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.509cd697.js",
+    "static/css/2.5dbdccff.chunk.css",
+    "static/js/2.a44c730e.chunk.js",
+    "static/css/main.15016d75.chunk.css",
+    "static/js/main.89ab011b.chunk.js"
+  ]
+}
