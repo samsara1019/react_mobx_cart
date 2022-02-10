@@ -24,7 +24,7 @@
     "mobx-persist": "^0.4.1",
     "mobx-react": "^6.1.8",
     "mobx-utils": "^5.5.4",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-intersection-observer": "^8.26.1",
